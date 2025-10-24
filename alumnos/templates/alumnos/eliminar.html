@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1 class="h3 mb-3 text-danger">Confirmar Eliminación</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="alert alert-warning" role="alert">
+            <strong>¡Atención!</strong> Está a punto de eliminar el siguiente alumno:
+        </div>
+        
+        <div class="card mb-3">
+            <div class="card-body">
+                <p><strong>ID:</strong> {{ alumno.id }}</p>
+                <p><strong>Nombre:</strong> {{ alumno.nombre }} {{ alumno.apellido }}</p>
+                <p><strong>Carrera:</strong> {{ alumno.get_carrera_display }}</p>
+                <p><strong>Nota 1:</strong> {{ alumno.nota1 }}</p>
+                <p><strong>Nota 2:</strong> {{ alumno.nota2 }}</p>
+                <p><strong>Nota 3:</strong> {{ alumno.nota3 }}</p>
+                <p><strong>Fecha de Ingreso:</strong> {{ alumno.fecha_ingreso|date:"d-m-Y" }}</p>
+            </div>
+        </div>
+
+        <p class="text-danger fw-bold">¿Está seguro de que desea eliminar este alumno? Esta acción no se puede deshacer.</p>
+
+        <form method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+            <a href="{% url 'lista' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

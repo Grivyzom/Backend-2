@@ -59,3 +59,5 @@ def eliminar_alumno(request, pk):
 def detalle_alumno(request, pk):
     alumno = get_object_or_404(Alumno, pk=pk)
     return render(request, 'alumnos/detalle.html', {'alumno': alumno})
+
+
